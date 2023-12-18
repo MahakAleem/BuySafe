@@ -16,7 +16,8 @@ function App() {
   const [ocrSuccessful, setOcrSuccessful] = useState(false);
   const [buyDecision, setBuyDecision] = useState('');
   const [imageSource, setImageSource] = useState('upload'); // 'upload' or 'capture'
-
+  // set loading to true while ocr
+  const [loading, setLoading] = useState(false);
   const webcamRef = useRef(null);
 
   const handleImageUpload = (event) => {
@@ -38,11 +39,13 @@ function App() {
   };
 
   const performOCR = (image) => {
+    setLoading(true);
     Tesseract.recognize(
       image,
       'eng', // Language: English
       { logger: (info) => console.log(info) }
     ).then(({ data: { text } }) => {
+      setLoading(false);
       setOcrSuccessful(true);
       const extractedText = text.toLowerCase();
       const allergicWordsArray = allergicWords.split(',').map(word => word.trim().toLowerCase());
