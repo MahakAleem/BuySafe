@@ -56,7 +56,7 @@ function App() {
   // Remove the overlay after 5 seconds
   setTimeout(() => {
     document.body.removeChild(overlay);
-  }, 5000);
+  }, 10000);
 };
 
 
