@@ -32,6 +32,29 @@ function App() {
     }
   };
 
+  //show Alert
+  const showAlert = (message) => {
+  // Create a div element for the overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'overlay';
+
+  // Create a div element for the message
+  const alertMessage = document.createElement('div');
+  alertMessage.className = 'alert-message';
+  alertMessage.textContent = message;
+
+  // Append the message to the overlay
+  overlay.appendChild(alertMessage);
+
+  // Append the overlay to the body
+  document.body.appendChild(overlay);
+
+  // Remove the overlay after 5 seconds
+  setTimeout(() => {
+    document.body.removeChild(overlay);
+  }, 5000);
+};
+
   const captureImage = async () => {
     const capturedImage = webcamRef.current.getScreenshot();
     setUploadedImage(capturedImage);
@@ -40,7 +63,7 @@ function App() {
 
   const performOCR = (image) => {
     setLoading(true);
-    alert("Loading..........");
+    showAlert("Loading..........");
     Tesseract.recognize(
       image,
       'eng', // Language: English
