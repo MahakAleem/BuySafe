@@ -40,6 +40,7 @@ function App() {
 
   const performOCR = (image) => {
     setLoading(true);
+    alert("Loading..........");
     Tesseract.recognize(
       image,
       'eng', // Language: English
