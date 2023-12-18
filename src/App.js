@@ -32,11 +32,15 @@ function App() {
     }
   };
 
-  //show Alert
-  const showAlert = (message) => {
+ const showAlertWithSpinner = (message) => {
   // Create a div element for the overlay
   const overlay = document.createElement('div');
   overlay.className = 'overlay';
+
+  // Create a div element for the spinner
+  const spinner = document.createElement('div');
+  spinner.className = 'spinner';
+  overlay.appendChild(spinner);
 
   // Create a div element for the message
   const alertMessage = document.createElement('div');
@@ -55,6 +59,9 @@ function App() {
   }, 5000);
 };
 
+
+
+
   const captureImage = async () => {
     const capturedImage = webcamRef.current.getScreenshot();
     setUploadedImage(capturedImage);
@@ -63,7 +70,8 @@ function App() {
 
   const performOCR = (image) => {
     setLoading(true);
-    showAlert("Loading..........");
+   // Usage
+  showAlertWithSpinner('Loading');
     Tesseract.recognize(
       image,
       'eng', // Language: English
