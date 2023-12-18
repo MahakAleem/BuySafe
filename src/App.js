@@ -1,3 +1,4 @@
+// main file
 import React, { useState, useRef } from 'react';
 import Webcam from 'react-webcam';
 import Tesseract from 'tesseract.js';
