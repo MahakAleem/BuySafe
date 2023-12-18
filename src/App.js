@@ -71,7 +71,7 @@ function App() {
   const performOCR = (image) => {
     setLoading(true);
    // Usage
-  showAlertWithSpinner('Loading');
+  showAlertWithSpinner('Loading.......');
     Tesseract.recognize(
       image,
       'eng', // Language: English
